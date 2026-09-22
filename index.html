@@ -463,7 +463,7 @@ html .slide{position:relative!important;inset:auto!important;display:flex!import
   background-image:linear-gradient(#1f2830 1px,transparent 1px),linear-gradient(90deg,#1f2830 1px,transparent 1px)!important;background-size:48px 48px!important}
 html .slide:last-child{break-after:auto;page-break-after:auto}
 html .reveal{opacity:1!important;transform:none!important}
-html .lvl li,html .chk,html .tl,html .rk,html .rk .sol,html .lvl,html .cst{opacity:1!important}
+html .lvl li,html .chk,html .tl,html .rk,html .rk .sol,html .lvl,html .cst,html table.eq tbody tr{opacity:1!important}
 html .chk{clip-path:none!important}
 html .chk .mk{color:#12161A!important;border-color:#00ff66!important;background:#00ff66!important}
 html .tl::before{border-color:#00ff66!important;background:#00ff66!important}
@@ -491,7 +491,7 @@ html.pm .slide{position:relative!important;inset:auto!important;display:flex!imp
   background-image:linear-gradient(#1f2830 1px,transparent 1px),linear-gradient(90deg,#1f2830 1px,transparent 1px)!important;background-size:48px 48px!important}
 html.pm .slide:last-child{break-after:auto;page-break-after:auto}
 html.pm .reveal{opacity:1!important;transform:none!important}
-html.pm .lvl li,html.pm .chk,html.pm .tl,html.pm .rk,html.pm .rk .sol,html.pm .lvl,html.pm .cst{opacity:1!important}
+html.pm .lvl li,html.pm .chk,html.pm .tl,html.pm .rk,html.pm .rk .sol,html.pm .lvl,html.pm .cst,html.pm table.eq tbody tr{opacity:1!important}
 html.pm .chk{clip-path:none!important}
 html.pm .chk .mk{color:#12161A!important;border-color:#00ff66!important;background:#00ff66!important}
 html.pm .tl::before{border-color:#00ff66!important;background:#00ff66!important}
@@ -509,6 +509,27 @@ html.pm .frame img{max-width:100%!important}
 
 .slide{scrollbar-width:none;-ms-overflow-style:none}
 .slide::-webkit-scrollbar{display:none;width:0;height:0}
+/* Slide 11: equipment table */
+@media(min-width:1000px){#top11.has-img{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
+#top11{align-items:start;margin-bottom:0}
+.tblwrap{border:1px solid var(--line);background:var(--panel);position:relative;overflow-x:auto}
+.tblwrap::before{content:"";position:absolute;top:-1px;left:-1px;width:16px;height:16px;border:solid var(--accent);border-width:2px 0 0 2px;pointer-events:none}
+.tblwrap::after{content:"";position:absolute;bottom:-1px;right:-1px;width:16px;height:16px;border:solid var(--accent);border-width:0 2px 2px 0;pointer-events:none}
+table.eq{width:100%;border-collapse:collapse;font:400 clamp(.92rem,1.05vw,1.03rem)/1.35 var(--f-display)}
+table.eq thead th{text-align:left;padding:11px 16px;font:500 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line);white-space:nowrap;background:linear-gradient(180deg,rgba(0,255,102,.08),transparent)}
+table.eq thead th:nth-child(2),table.eq thead th:nth-child(3){text-align:right;font-variant-numeric:tabular-nums}
+table.eq tbody td{padding:9px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+table.eq tbody td:nth-child(2),table.eq tbody td:nth-child(3){text-align:right;white-space:nowrap;font:500 .95em/1.3 var(--f-mono);font-variant-numeric:tabular-nums;color:#c4cfd8}
+table.eq tbody tr{opacity:0}
+table.eq tbody tr.total{opacity:1}
+.slide.active table.eq tbody tr{animation:up .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 55ms + 150ms)}
+table.eq tbody tr:hover td{background:rgba(0,255,102,.05)}
+table.eq tr.total td{border-top:2px solid var(--accent);border-bottom:0;padding-top:14px;padding-bottom:14px;font-weight:700;color:var(--text);background:linear-gradient(180deg,rgba(0,255,102,.05),rgba(0,255,102,.11))}
+table.eq tr.total td:first-child{font:700 .95em/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-mono);color:var(--accent);text-shadow:0 0 16px var(--accent-glow)}
+.slide.active tr.total{animation:totalIn .8s ease-out both;animation-delay:calc(15 * 55ms + 350ms)}
+@keyframes totalIn{from{opacity:0;box-shadow:none}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.slide.active table.eq tbody tr,.slide.active tr.total{animation:none;opacity:1}}
 /* Navigation */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;height:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));
   padding:0 var(--gutter) env(safe-area-inset-bottom,0px);display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);background:rgba(18,22,26,.86);backdrop-filter:blur(6px)}
@@ -1035,7 +1056,7 @@ html.pm .frame img{max-width:100%!important}
         <article class="cst reveal" style="--d:2">
           <header><div class="code"><b>STAGE 02</b><span>Hardware</span></div><h3>Тестовий набір обладнання (Hardware)</h3></header>
           <div class="rows">
-          <div class="kv"><span class="k">Бюджет</span><span class="big rng">$2&#8239;000&#8239;–&#8239;$3&#8239;000</span><span class="d">Чиста собівартість закупівлі заліза: Raspberry Pi, MikroTik, камери, сенсори, компоненти</span><span class="badge">Фінансується авансом</span></div>
+          <div class="kv"><span class="k">Бюджет</span><span class="big rng">$1&#8239;500&#8239;–&#8239;$2&#8239;000</span><span class="d">Чиста собівартість закупівлі заліза: Raspberry Pi, MikroTik, камери, сенсори, компоненти</span><span class="badge">Фінансується авансом</span></div>
           </div>
           <i class="flow"></i>
         </article>
@@ -1046,6 +1067,52 @@ html.pm .frame img{max-width:100%!important}
           <div class="kv"><span class="k">Бюджет</span><span class="big">$2 000 <small>/ місяць</small></span><span class="d">Супровід польових тестів, виправлення багів, навчання та сертифікація нових операторів</span></div>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 11: EQUIPMENT SPEC & BUDGET ============ -->
+  <section class="slide" id="s11" data-title="Специфікація обладнання">
+    <div class="slide-inner">
+      <div class="top3 has-img" id="top11">
+        <div class="headtxt">
+          <p class="eyebrow reveal" style="--d:0">Тестовий комплект · Специфікація</p>
+          <h2 class="reveal" style="--d:0"><span class="lead">Специфікація обладнання</span> (тестовий комплект)</h2>
+
+          <div class="tblwrap reveal fade" style="--d:1">
+            <table class="eq">
+              <thead>
+                <tr><th>Найменування</th><th>Кіл-ть (од)</th><th>Ціна / Сума ($)</th></tr>
+              </thead>
+              <tbody>
+                <tr style="--i:0"><td>Raspberry Pi</td><td>1</td><td>$240</td></tr>
+                <tr style="--i:1"><td>Карта пам&#39;яті 32GB</td><td>1</td><td>$23</td></tr>
+                <tr style="--i:2"><td>Маршрутизатор Mikrotik hEX S</td><td>1</td><td>$75</td></tr>
+                <tr style="--i:3"><td>Комутатор мережевий TP-Link TL-SG108E</td><td>1</td><td>$33</td></tr>
+                <tr style="--i:4"><td>Конвертер UART to Ethernet</td><td>1</td><td>$20</td></tr>
+                <tr style="--i:5"><td>Starlink mini</td><td>1</td><td>$422</td></tr>
+                <tr style="--i:6"><td>Пульт RadioMaster TX12 MKII ELRS M2 (+ АКБ 5000mAh)</td><td>1</td><td>$148</td></tr>
+                <tr style="--i:7"><td>Кабель одножильний 24В</td><td>50 м</td><td>$77</td></tr>
+                <tr style="--i:8"><td>Модуль GPS/GLONASS/Galileo/Compass BN-880</td><td>1</td><td>$16</td></tr>
+                <tr style="--i:9"><td>Патчкорд 5м</td><td>1</td><td>$3</td></tr>
+                <tr style="--i:10"><td>IP-камера Dahua DH-IPC-HFW2449T-AS-IL-BE 4МП (3.6мм)</td><td>2</td><td>$244</td></tr>
+                <tr style="--i:11"><td>IP-камера Dahua DH-T5A-PV 5МП Wi-Fi (2.8мм)</td><td>4</td><td>$320</td></tr>
+                <tr style="--i:12"><td>IP-камера Dahua DH-IPC-HDW2449T-S-PRO-BE 4МП (2.8мм)</td><td>1</td><td>$124</td></tr>
+                <tr style="--i:13"><td>Проводи, конектори</td><td>—</td><td>$8</td></tr>
+                <tr style="--i:14"><td>Додаткова проводка</td><td>1</td><td>$67</td></tr>
+                <tr class="total"><td>РАЗОМ</td><td></td><td>$1 820</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="shot reveal fade" style="--d:2" id="shot11">
+          <div class="frame">
+            <img src="slide11.png" alt="Компоненти тестового комплекту обладнання" style="width:100%; border: 1px solid var(--accent);"
+                 onerror="document.getElementById('shot11').classList.add('gone');document.getElementById('top11').classList.remove('has-img');">
+            <span class="tag">Fig. 11 — Тестовий комплект</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
