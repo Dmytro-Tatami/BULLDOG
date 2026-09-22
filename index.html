@@ -507,8 +507,8 @@ html.pm .title-grid{grid-template-columns:minmax(0,1fr) minmax(0,560px)!importan
 html.pm .frame img{max-width:100%!important}
 
 
-.slide{scrollbar-width:none;-ms-overflow-style:none}
-.slide::-webkit-scrollbar{display:none;width:0;height:0}
+.slide,.tblwrap{scrollbar-width:none;-ms-overflow-style:none}
+.slide::-webkit-scrollbar,.tblwrap::-webkit-scrollbar{display:none;width:0;height:0}
 /* Slide 11: equipment table */
 @media(min-width:1000px){#top11.has-img{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
 #top11{align-items:start;margin-bottom:0}
@@ -530,6 +530,15 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
 .slide.active tr.total{animation:totalIn .8s ease-out both;animation-delay:calc(15 * 55ms + 350ms)}
 @keyframes totalIn{from{opacity:0;box-shadow:none}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.slide.active table.eq tbody tr,.slide.active tr.total{animation:none;opacity:1}}
+/* Slide 11: motivation block */
+.motiv{margin-top:10px;opacity:0}
+.slide.active .motiv{animation:fade .9s ease both;animation-delay:1.1s}
+.motiv .mfr{position:relative;border:1px solid var(--line);background:var(--panel);padding:6px}
+.motiv .mfr::before{content:"";position:absolute;top:-1px;left:-1px;width:14px;height:14px;border:solid var(--accent);border-width:2px 0 0 2px}
+.motiv .mfr::after{content:"";position:absolute;bottom:-1px;right:-1px;width:14px;height:14px;border:solid var(--accent);border-width:0 2px 2px 0}
+.motiv img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover;border:1px solid var(--accent);margin-bottom:10px}
+.motiv p{margin:0;padding:2px 2px 4px;text-align:center;font:700 clamp(.92rem,1.3vw,1.12rem)/1.35 var(--f-display);letter-spacing:.01em;color:var(--text);text-shadow:0 0 16px var(--accent-glow),0 0 2px var(--accent-glow)}
+@media(prefers-reduced-motion:reduce){.slide.active .motiv{animation:none;opacity:1}}
 /* Navigation */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;height:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));
   padding:0 var(--gutter) env(safe-area-inset-bottom,0px);display:flex;align-items:center;gap:16px;border-top:1px solid var(--line);background:rgba(18,22,26,.86);backdrop-filter:blur(6px)}
@@ -788,7 +797,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
           <p class="col-label reveal" style="--d:1"><b>01</b> Склад R&amp;D команди · розподіл функцій</p>
           <div class="roles">
             <article class="role reveal" style="--d:1">
-              <div class="who"><h3>Керівник проєкту</h3><span class="tag">ROLE 01</span></div>
+              <div class="who"><h3>Проєктування</h3><span class="tag">ROLE 01</span></div>
             <p class="aka">Проджект-менеджер</p>
               <ul>
               <li>Загальне керування R&amp;D процесом</li>
@@ -797,7 +806,9 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
               </ul>
             </article>
             <article class="role reveal" style="--d:2">
-              <div class="who"><h3>Технічний фахівець</h3><span class="tag">ROLE 02</span></div>
+              <div class="who"><h3>Технічна реалізація</h3><span class="tag">ROLE 02</span></div>
+            <p class="aka">Технічний спеціаліст</p>
+
               <ul>
               <li>Програмування логіки системи</li>
               <li>Побудова та налаштування мережі зв'язку (MikroTik / Starlink)</li>
@@ -1111,6 +1122,14 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
             <img src="slide11.png" alt="Компоненти тестового комплекту обладнання" style="width:100%; border: 1px solid var(--accent);"
                  onerror="document.getElementById('shot11').classList.add('gone');document.getElementById('top11').classList.remove('has-img');">
             <span class="tag">Fig. 11 — Тестовий комплект</span>
+          </div>
+
+          <div class="motiv" id="motiv11">
+            <div class="mfr">
+              <img src="slide11_motivation.png" style="width:100%; border: 1px solid var(--accent); margin-bottom: 10px;"
+                   onerror="document.getElementById('motiv11').classList.add('gone');">
+              <p>Створюємо майбутнє оборонних технологій</p>
+            </div>
           </div>
         </div>
       </div>
