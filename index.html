@@ -443,6 +443,10 @@ h2 .lead{color:var(--accent);text-shadow:0 0 24px var(--accent-glow)}
 .cst .big small{font-size:.42em;letter-spacing:0;font-weight:500;text-shadow:none}
 .cst .d{display:block;margin-top:8px;font:400 clamp(1rem,1.3vw,1.15rem)/1.45 var(--f-display);color:#c4cfd8}
 .cst .badge{display:inline-block;margin-top:10px;padding:5px 9px;border:1px solid var(--warn);color:var(--warn);font:700 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.cst .calib{display:inline-flex;align-items:center;gap:2px;margin-top:4px;padding:8px 18px;border:1px solid var(--warn);color:var(--warn);font:700 1.1rem/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;text-shadow:0 0 14px rgba(255,138,31,.45);background:rgba(255,138,31,.06);animation:calibPulse 2s ease-in-out infinite}
+.cst .calib .brk{opacity:.5;font-weight:400;margin:0 2px}
+@keyframes calibPulse{0%,100%{opacity:1}50%{opacity:.42}}
+@media(prefers-reduced-motion:reduce){.cst .calib{animation:none}}
 .slide.active .cst.reveal{animation-delay:calc(var(--d) * 500ms + 200ms)}
 .slide.active .cst .big{animation:numIn .9s ease-out both;animation-delay:calc(var(--d) * 500ms + 700ms)}
 @keyframes numIn{from{opacity:0;filter:blur(6px)}to{opacity:1;filter:none}}
@@ -718,12 +722,12 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
         <div class="thesis reveal" style="--d:1">
           <div class="label">Схема каналу</div>
           <p>Від Starlink-терміналу до екрана оператора: апаратна база, програмний стек та тактичний інтерфейс керування.</p>
-          <div class="path"><span>Starlink</span><i></i><span>MikroTik</span><i></i><span>Raspberry Pi</span><i></i><span>Контролери</span><i></i><span>HUD</span></div>
+          <div class="path"><span>Starlink</span><i></i><span>Мережевий комплекс</span><i></i><span>Обчислювальний мікромодуль</span><i></i><span>Контролери</span><i></i><span>HUD</span></div>
         </div>
         </div>
         <div class="shot reveal fade" style="--d:2" id="shot4">
           <div class="frame">
-            <img src="slide4.png" alt="Мобільна система зв'язку: Raspberry Pi, MikroTik, додаткові датчики, екран моніторингу" style="width:100%; border: 1px solid var(--accent);"
+            <img src="slide4.png" alt="Мобільна система зв'язку: центральний обчислювальний мікромодуль, інтегрований комплекс мережевого обладнання, додаткові датчики, екран моніторингу" style="width:100%; border: 1px solid var(--accent);"
                  onerror="document.getElementById('shot4').classList.add('gone');document.getElementById('top4').classList.remove('has-img');">
             <span class="tag">Fig. 04 — Апаратний контур системи</span>
           </div>
@@ -738,8 +742,8 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
             <p class="sub">Апаратна база системи</p>
           </header>
           <ul>
-            <li><i class="led"></i><div><h4>Мережевий вузол</h4><p>Маршрутизатор MikroTik для побудови надійної системи передачі даних через термінал Starlink.</p><span class="chip">MikroTik · Starlink</span></div></li>
-            <li><i class="led"></i><div><h4>Мозок платформи</h4><p>Одноплатний комп'ютер Raspberry Pi як центральний обчислювальний модуль.</p><span class="chip">Raspberry Pi</span></div></li>
+            <li><i class="led"></i><div><h4>Мережевий вузол</h4><p>Інтегрований комплекс мережевого обладнання для побудови надійної системи передачі даних через термінал Starlink.</p><span class="chip">Мережевий комплекс · Starlink</span></div></li>
+            <li><i class="led"></i><div><h4>Мозок платформи</h4><p>Центральний обчислювальний мікромодуль високої продуктивності, що виконує роль головного обчислювального вузла платформи.</p><span class="chip">Обчислювальний мікромодуль</span></div></li>
             <li><i class="led"></i><div><h4>Статична платформа</h4><p>Додаткові спеціалізовані контролери керування базою.</p><span class="chip">Base controllers</span></div></li>
             <li><i class="led"></i><div><h4>Рухома частина (Сенсори)</h4><p>GPS-модуль, цифровий компас, акселерометр та виконавчі мікроконтролери позиціонування.</p><span class="chip">GPS · Compass · Accel</span></div></li>
           </ul>
@@ -754,7 +758,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
           <ul>
             <li><i class="led"></i><div><h4>Навігація та стабілізація</h4><p>Інтеграція польотного стеку iNav для координації рухів.</p><span class="chip">iNav</span></div></li>
             <li><i class="led"></i><div><h4>Контроль периферії</h4><p>Прошивки на базі Arduino для низькорівневого керування датчиками та двигунами опор.</p><span class="chip">Arduino firmware</span></div></li>
-            <li><i class="led"></i><div><h4>Системне адміністрування</h4><p>Скрипти автоматизації та конфігурації для ОС Raspberry Pi та RouterOS (MikroTik).</p><span class="chip">Pi OS · RouterOS</span></div></li>
+            <li><i class="led"></i><div><h4>Системне адміністрування</h4><p>Скрипти автоматизації та конфігурації для ОС обчислювального мікромодуля та інтегрований комплекс мережевого обладнання.</p><span class="chip">Module OS · Network OS</span></div></li>
           </ul>
           <i class="flow"></i>
         </section>
@@ -811,7 +815,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
 
               <ul>
               <li>Програмування логіки системи</li>
-              <li>Побудова та налаштування мережі зв'язку (MikroTik / Starlink)</li>
+              <li>Побудова та налаштування мережі зв'язку (інтегрований комплекс мережевого обладнання / Starlink)</li>
               <li>Проведення комплексних стендових та польових тестів</li>
               </ul>
             </article>
@@ -920,6 +924,11 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
       </div>
 
       <div class="risks">
+        <article class="rk" style="--d:3">
+          <div class="cat"><span class="ico"><svg class="w" viewBox="0 0 44 44"><path d="M22 6 L40 37 H4 Z"/><path d="M22 17 V27"/><path d="M22 32 V33"/></svg><svg class="ok" viewBox="0 0 44 44"><path d="M22 5 L38 11 V22 C38 31 31 37 22 40 C13 37 6 31 6 22 V11 Z"/><path d="M14 22 L20 28 L30 16"/></svg></span><h3>Нічна навігація та безпека сліпих зон</h3></div>
+          <div class="risk"><p class="lb">Ризик</p><p class="txt"><span class="ln"><b class="wk">Відсутність освітлення</b>, туман або задимлення</span><span class="ln">Наїзд на персонал чи перешкоди в сліпих зонах платформи</span></p></div>
+          <div class="sol"><p class="lb">Поточне рішення</p><p class="txt"><span class="ln">Високочутливі нічні IP-модулі моніторингу</span><span class="ln"><b class="kw">Акустичне сповіщення</b> — голосовий/звуковий сигнал перед початком руху</span></p></div>
+        </article>
         <article class="rk" style="--d:0">
           <div class="cat"><span class="ico"><svg class="w" viewBox="0 0 44 44"><path d="M22 6 L40 37 H4 Z"/><path d="M22 17 V27"/><path d="M22 32 V33"/></svg><svg class="ok" viewBox="0 0 44 44"><path d="M22 5 L38 11 V22 C38 31 31 37 22 40 C13 37 6 31 6 22 V11 Z"/><path d="M14 22 L20 28 L30 16"/></svg></span><h3>Несанкціонований запуск системи</h3></div>
           <div class="risk"><p class="lb">Ризик</p><p class="txt"><span class="ln"><b class="wk">Перехоплення контролю</b></span><span class="ln">Випадковий запуск платформи</span></p></div>
@@ -932,7 +941,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
         </article>
         <article class="rk" style="--d:2">
           <div class="cat"><span class="ico"><svg class="w" viewBox="0 0 44 44"><path d="M22 6 L40 37 H4 Z"/><path d="M22 17 V27"/><path d="M22 32 V33"/></svg><svg class="ok" viewBox="0 0 44 44"><path d="M22 5 L38 11 V22 C38 31 31 37 22 40 C13 37 6 31 6 22 V11 Z"/><path d="M14 22 L20 28 L30 16"/></svg></span><h3>Зовнішні залежності</h3></div>
-          <div class="risk"><p class="lb">Ризик</p><p class="txt"><span class="ln"><b class="wk">Зрив строків</b> від сторонніх виробників заліза</span><span class="ln">Raspberry Pi, MikroTik, датчики</span></p></div>
+          <div class="risk"><p class="lb">Ризик</p><p class="txt"><span class="ln"><b class="wk">Зрив строків</b> від сторонніх виробників заліза</span><span class="ln">Центральний обчислювальний мікромодуль, інтегрований комплекс мережевого обладнання, датчики</span></p></div>
           <div class="sol"><p class="lb">Рішення</p><p class="txt"><span class="ln">Буферний запас компонентів на складі</span><span class="ln">Пошук альтернативних виробників</span><span class="ln">І... <b class="kw">терпіння</b> 🤝</span></p></div>
         </article>
       </div>
@@ -964,9 +973,11 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
             <p class="sub">Моніторинг</p>
           </header>
           <ul>
-            <li><i class="led"></i><div><h4>Рух платформи</h4><p>2 ходові IP-камери (Front/Rear) від Hikvision/Dahua з потужним нічним режимом.</p></div></li>
-            <li><i class="led"></i><div><h4>Огляд модуля</h4><p>1 стаціонарна ширококутна IP-камера (надійний огляд рухів модуля без ризику ламання сервоприводів від вібрації).</p></div></li>
+            <li><i class="led"></i><div><h4>Рух платформи</h4><p>2 ходові цифрові IP-модулі оптико-електронного моніторингу (Front/Rear) з потужним нічним режимом.</p></div></li>
+            <li><i class="led"></i><div><h4>Огляд модуля</h4><p>1 стаціонарний ширококутний цифровий IP-модуль (надійний огляд рухів модуля без ризику ламання сервоприводів від вібрації).</p></div></li>
             <li><i class="led"></i><div><h4>Контур опор</h4><p>Субкомпактні міні-IP-камери з мінімальною роздільною здатністю для контролю заземлення лап (економія трафіку та бюджету).</p></div></li>
+            <li><i class="led"></i><div><h4>Тепловізійний контур</h4><p>Тепловізійний IP-модуль — надійний моніторинг периметра у складних метеоумовах та вночі.</p></div></li>
+            <li><i class="led"></i><div><h4>Акустичне сповіщення</h4><p>Модуль акустичного сповіщення — голосове/звукове попередження оператором перед початком руху.</p></div></li>
           </ul>
           <i class="flow"></i>
         </section>
@@ -989,7 +1000,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
             <p class="sub">Канал і резерв</p>
           </header>
           <ul>
-            <li><i class="led"></i><div><h4>Starlink + MikroTik</h4><p>QoS пріоритезація відео та команд.</p></div></li>
+            <li><i class="led"></i><div><h4>Starlink + мережевий комутаційний вузол</h4><p>QoS пріоритезація відео та команд.</p></div></li>
             <li><i class="led"></i><div><h4>Резервний канал</h4><p>Резервний 4G-модем.</p></div></li>
             <li><i class="led"></i><div><h4>IP-Relay (Hardware Watchdog)</h4><p>Віддалене апаратне перезавантаження «мізків».</p></div></li>
           </ul>
@@ -1067,7 +1078,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
         <article class="cst reveal" style="--d:2">
           <header><div class="code"><b>STAGE 02</b><span>Hardware</span></div><h3>Тестовий набір обладнання (Hardware)</h3></header>
           <div class="rows">
-          <div class="kv"><span class="k">Бюджет</span><span class="big rng">$1&#8239;500&#8239;–&#8239;$2&#8239;000</span><span class="d">Чиста собівартість закупівлі заліза: Raspberry Pi, MikroTik, камери, сенсори, компоненти</span><span class="badge">Фінансується авансом</span></div>
+          <div class="kv"><span class="k">Бюджет</span><span class="big rng">$2&#8239;000&#8239;–&#8239;$2&#8239;500</span><span class="d">Чиста собівартість закупівлі заліза: центральний обчислювальний мікромодуль, інтегрований комплекс мережевого обладнання, камери, сенсори, компоненти</span><span class="badge">Фінансується авансом</span></div>
           </div>
           <i class="flow"></i>
         </article>
@@ -1075,7 +1086,7 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
           <header><div class="code"><b>STAGE 03</b><span>Support</span></div><h3>Етап подальшого супроводу, тестування та навчання</h3></header>
           <div class="rows">
           <div class="kv"><span class="k">Формат</span><span class="d">Довгострокова підтримка та масштабування рішення для HYPER</span></div>
-          <div class="kv"><span class="k">Бюджет</span><span class="big">$2 000 <small>/ місяць</small></span><span class="d">Супровід польових тестів, виправлення багів, навчання та сертифікація нових операторів</span></div>
+          <div class="kv"><span class="k">Бюджет</span><span class="calib"><span class="brk">[</span>CALIBRATING...<span class="brk">]</span></span><span class="d">Супровід польових тестів, виправлення багів, навчання та сертифікація нових операторів</span></div>
           </div>
         </article>
       </div>
@@ -1096,22 +1107,24 @@ table.eq tr.total td:last-child{font:700 clamp(1.15rem,1.7vw,1.5rem)/1 var(--f-m
                 <tr><th>Найменування</th><th>Кіл-ть (од)</th><th>Ціна / Сума ($)</th></tr>
               </thead>
               <tbody>
-                <tr style="--i:0"><td>Raspberry Pi</td><td>1</td><td>$240</td></tr>
-                <tr style="--i:1"><td>Карта пам&#39;яті 32GB</td><td>1</td><td>$23</td></tr>
-                <tr style="--i:2"><td>Маршрутизатор Mikrotik hEX S</td><td>1</td><td>$75</td></tr>
-                <tr style="--i:3"><td>Комутатор мережевий TP-Link TL-SG108E</td><td>1</td><td>$33</td></tr>
-                <tr style="--i:4"><td>Конвертер UART to Ethernet</td><td>1</td><td>$20</td></tr>
-                <tr style="--i:5"><td>Starlink mini</td><td>1</td><td>$422</td></tr>
-                <tr style="--i:6"><td>Пульт RadioMaster TX12 MKII ELRS M2 (+ АКБ 5000mAh)</td><td>1</td><td>$148</td></tr>
-                <tr style="--i:7"><td>Кабель одножильний 24В</td><td>50 м</td><td>$77</td></tr>
-                <tr style="--i:8"><td>Модуль GPS/GLONASS/Galileo/Compass BN-880</td><td>1</td><td>$16</td></tr>
-                <tr style="--i:9"><td>Патчкорд 5м</td><td>1</td><td>$3</td></tr>
-                <tr style="--i:10"><td>IP-камера Dahua DH-IPC-HFW2449T-AS-IL-BE 4МП (3.6мм)</td><td>2</td><td>$244</td></tr>
-                <tr style="--i:11"><td>IP-камера Dahua DH-T5A-PV 5МП Wi-Fi (2.8мм)</td><td>4</td><td>$320</td></tr>
-                <tr style="--i:12"><td>IP-камера Dahua DH-IPC-HDW2449T-S-PRO-BE 4МП (2.8мм)</td><td>1</td><td>$124</td></tr>
-                <tr style="--i:13"><td>Проводи, конектори</td><td>—</td><td>$8</td></tr>
-                <tr style="--i:14"><td>Додаткова проводка</td><td>1</td><td>$67</td></tr>
-                <tr class="total"><td>РАЗОМ</td><td></td><td>$1 820</td></tr>
+                <tr style="--i:0"><td>Центральний обчислювальний мікромодуль високої продуктивності</td><td>1</td><td>$240</td></tr>
+                <tr style="--i:1"><td>Твердотільний накопичувач ОС та логічних скриптів</td><td>1</td><td>$23</td></tr>
+                <tr style="--i:2"><td>Керуючий маршрутизатор мережевого комплексу</td><td>1</td><td>$75</td></tr>
+                <tr style="--i:3"><td>Мережевий комутатор розподілу трафіку</td><td>1</td><td>$33</td></tr>
+                <tr style="--i:4"><td>Інтерфейсний перетворювач протоколів зв&#39;язку</td><td>1</td><td>$20</td></tr>
+                <tr style="--i:5"><td>Мобільний термінал супутникового зв&#39;язку (версія міні)</td><td>1</td><td>$422</td></tr>
+                <tr style="--i:6"><td>Тактичний пульт дистанційного керування дублюючого контуру</td><td>1</td><td>$148</td></tr>
+                <tr style="--i:7"><td>Магістральна силова проводка 24В</td><td>50 м</td><td>$77</td></tr>
+                <tr style="--i:8"><td>Двоконтурний навігаційний модуль (GPS/Компас/Гіроскоп)</td><td>1</td><td>$16</td></tr>
+                <tr style="--i:9"><td>Захищений комутаційний шлейф 5м</td><td>1</td><td>$3</td></tr>
+                <tr style="--i:10"><td>Цифровий IP-модуль оптичного моніторингу 4МП (ходовий, 3.6мм)</td><td>2</td><td>$244</td></tr>
+                <tr style="--i:11"><td>Цифровий IP-модуль оптичного моніторингу 5МП (оглядовий, 2.8мм)</td><td>4</td><td>$320</td></tr>
+                <tr style="--i:12"><td>Цифровий IP-модуль контролю опорних лап 4МП (2.8мм)</td><td>1</td><td>$124</td></tr>
+                <tr style="--i:13"><td>Комплект тактичної комутації та з&#39;єднувачів</td><td>—</td><td>$8</td></tr>
+                <tr style="--i:14"><td>Додатковий комплект захищеної проводки MIL-SPEC</td><td>1</td><td>$67</td></tr>
+                <tr style="--i:15"><td>Тепловізійний IP-модуль оптичного моніторингу</td><td>1</td><td>$450</td></tr>
+                <tr style="--i:16"><td>Акустичний модуль зовнішнього сповіщення (динамік)</td><td>1</td><td>$45</td></tr>
+                <tr class="total"><td>РАЗОМ</td><td></td><td>$2 315</td></tr>
               </tbody>
             </table>
           </div>
